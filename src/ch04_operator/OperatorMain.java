@@ -163,6 +163,217 @@ public class OperatorMain {
         // 2로 나눈 나머지가 0이면 짝수, 1이면 홀수
         System.out.println(anyNum % 2);
 
+        // 게시판 페이징 구현
+        int totalCountGul = 33; // 게시판에 글이 총 33개 있다.
+        int showCountPage = 10; // 한 페이지에서 보여줄 글의 수가 10개
+
+        // 총 페이지의 수 -> 4
+        // 33 / 10 = 3.3 -> 올림처리 = 4
+        // Math.ceil(파라미터값) = 올림처리
+        // 값은 항상 double 타입으로 나오기때문에 앞에서 반드시 int형으로 변환해주기
+        int totalPage = (int)Math.ceil((double)totalCountGul / showCountPage);
+        System.out.println(totalPage);
+
+        // 마지막 4페이지에 있는 글의 개수?
+        // 33 % 10 = 3개
+        int countLastPage = totalCountGul % showCountPage;
+        System.out.println(countLastPage);
+
+        System.out.println("\n=======================================================\n");
+
+        // 비교 연산자
+        int numFive = 5;
+        double pi = 3.14;
+        int numOne = 1;
+
+        // 비교 결과에 따라 true/false가 리턴된다.
+        System.out.println(numFive < numOne);
+        // false값 출력
+        System.out.println(numOne < numFive);
+        // true값 출력
+
+
+
+        // 결과가 true/false 라서 boolean 타입 변수에 담을 수 있다.
+        boolean bolRst = numFive > numOne;
+
+        // 타입이 다른 숫자도 서로 비교 가능
+        System.out.println(numFive < pi);
+
+        // == 는 왼쪽과 오른쪽이 같은지 비교
+        // 같다면 true, 다르면 false 리턴
+        // =은 단순 확인용
+        // == 비교를 하는게 핵심
+        System.out.println(numOne == numFive);
+        System.out.println(numOne == 1);
+
+        // != 는 왼쪽과 오른쪽이 다른지 비교
+        // 다르다면 true 같다면 false 리턴
+        System.out.println(numOne != numFive);
+        System.out.println(numOne != 1);
+
+        // 문자(char)도 비교연산자를 통해 이름순 정렬에 사용할 수 있다.
+        System.out.println('가' < '나'); // 유니코드상 '가'가 '나' 보다 먼저 위치(=작은 숫자)
+
+        String cat = "고양이";
+        String dog = "강아지";
+
+        System.out.println(dog.charAt(0) < cat.charAt(0));
+
+        System.out.println("\n===============================================\n");
+
+        // 문자열이 같은지 비교
+        String ship = "배";
+        String pear = "배";
+        String stomach = new String("배");
+
+        System.out.println(ship == pear);
+        System.out.println(pear == stomach);
+        System.out.println(ship == stomach);
+
+        // String 변수 = "값" 과 String 변수 = new String("값")
+        // 은 "값"이 같더라도 new String에 저장되는 메모리 주소값이 다르기 때문에
+        // 비교연산자(==) 했을때 다르게 나온다 (중요)
+
+        // 문자열 값이 같은지 비교
+        // .equals(문자열)
+        // 해당 문자열이 괄호 안 문자열과 같다면 true, 다르면 false 리턴
+        System.out.println(ship.equals(stomach));
+
+        // 빈 문자열(empty) 체크
+        String inputData = "";
+        System.out.println(inputData.equals(""));
+        System.out.println(inputData.length() == 0);
+        System.out.println(inputData.isEmpty()); // 빈 문자열이면 true
+
+        System.out.println("\n======================================================\n");
+
+        // 삼항연산자 == ? :
+        // (비교조건 + 등호) ? (결과값) : (결과값)
+        // 등호(=)는 오른쪽
+        String inputId = "akow283";
+
+        // inputId의 글자수가 7글자 이상이면 통과, 7글자 미만이면 탈락
+        // 첫번째 항에는 조건이 들어간다. (boolean)
+        // 조건이 true면 두번째 항의 값을 리턴
+        // 조건이 false면 세번째 항의 값을 리턴
+        String check = (inputId.length() >= 7) ? ("통과") : ("탈락");
+        System.out.println(check);
+
+        // 삼항연산자의 ()는 생략이 가능하다
+        int checkInt = (inputId.length() >= 7) ? 1 : 0;
+        System.out.println(checkInt);
+
+        int score = 75;
+        // score가 90점 이상이면 "A", 90점 미만이면 "B" grade에 담기도록
+        String grade = (score >= 90) ? ("A") : ("B");
+        System.out.println(grade);
+
+        // 이중으로 삼항연산자
+        // score가 90점 이상이면 "A", 80점 이상이면 "B", 그 외 "C"
+        // 삼항연산자 안의 ()안에 또 삼항연산자를 입력할수있다.
+        grade =(score >= 90) ? ("A") : ((score >= 80) ? ("B") : ("C"));
+        System.out.println(grade);
+
+        System.out.println("\n===============================================\n");
+
+        // 논리 연산자
+        // 조건 체크를 여러번 하지 않고 한번에 끝낼 수 있도록 도와줌
+
+        // 회원가입시
+        // 이름은 한글자 이상
+        // 나이는 14세 이상
+        // 휴대폰번호는 11자리 또는 10자리
+        String inputName = "찬웅";
+        int inputAge = 20;
+        String inputPhone = "01073987332";
+
+        System.out.println(inputName.length() >=1);
+        System.out.println(inputAge >= 14);
+
+        // 논리연산자 AND
+        // &&
+        // && 좌측 조건과 우측 조건 모두 true 일때만 true 리턴
+        // 둘 중 하나라도 false면 false 리턴
+        System.out.println(inputName.length() >= 1 && inputAge >= 14);
+
+        // 논리연산자 OR
+        // ||
+        // || 좌측 조건과 우측 조건 중 하나라도 true이면 true 리턴
+        // 둘다 false일 때만 false 리턴
+
+        // 휴대폰번호는 10자리 또는 11자리 여야 한다.
+        // x == 10 || x == 11
+//        System.out.println(inputPhone.length() == 10 || inputPhone.length() == 11);
+        System.out.println(inputPhone.length() == 11 || inputPhone.length() == 10);
+        // 실행되는 조건의 결과 값을 앞에 작성해놓으면 메모리적으로 효율이 좋다
+        // 10 <= x <= 11
+        // 10 <= x && x <= 11
+        System.out.println(10 <= inputPhone.length() && inputPhone.length() <= 11);
+
+        // !
+        // !를 boolean 타입 앞에 붙여주면 (true/false) 값을 뒤집는다.
+        // 이름은 1글자 이상 = 이름은 empty가 아니어야 한다.
+        // name이 empty일때 true 리턴
+        // !inputName.isEmpty() = name이 empty가 아니라면 true
+
+        System.out.println(!inputName.isEmpty() && inputAge >= 14
+                && (inputPhone.length() == 10 || inputPhone.length() == 11));
+
+
+        System.out.println("\n====================================================\n");
+
+        // 비트 연산자
+        // 2진수
+        int bitTen = 10; // 1010
+        int bitNine = 9; // 1001
+                         // 1000 AND 연산
+                         // 1011 OR 연산
+                         // 0011 XOR 연산
+
+        // 비트 연산자 AND
+        // &
+        // 2진수의 각 자리수를 비교해서 같은 자리에 숫자가 둘 다 1이면
+        // 그 자리에 1이 남고, 둘 중 하나라도 1이 아니면 그 자리에 0이 남음
+        System.out.println(bitTen & bitNine); // 8 -> 1000
+
+        // 비트 연산자 OR
+        // |
+        // 각 자리수를 비교해서 둘중 하나라도 1이면 그 자리에 1이 남는다
+        System.out.println(bitTen | bitNine); // 11 -> 1011
+
+        // 비트연산자 XOR
+        // ^
+        // 각 자리수를 비교해서 서로 다른 경우에만 그 자리에 1이 남음
+        System.out.println(bitTen ^ bitNine); // 3 -> 11
+
+        // 2진수 예시
+        // 4가지 취미를 나타내기 위해 숫자로 저장
+        // 0 0 0 1 : 축구를 좋아함
+        // 0 0 1 0 : 야구를 좋아함
+        // 0 1 0 0 : 농구를 좋아함
+        // 1 0 0 0 : 배구를 좋아함
+        // 강연 : 0011 -> 3
+        int gyLike = 3;
+        // 동우 : 0110 -> 6
+        int dwLike = 6;
+
+        System.out.println(gyLike & dwLike);  // 2 -> 10
+
+        // 리눅스에서 파일, 폴더의 권한을 설정하는 명령어인 chmod
+
+        System.out.println("\n===================================\n");
+        // 십진수 303과 147에 대해서 비트연산자 & 직접 해보기
+        int bitSam = 303;
+        int bitIll = 147;
+
+        System.out.println(bitSam & bitIll);
+
+
+
+
+
+
 
 
 
