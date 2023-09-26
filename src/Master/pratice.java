@@ -113,11 +113,9 @@ public class pratice {
 
         String findWally = "윌리울리일리울리울리일리월리일리윌리월리울리일리일리월리일리윌리일리윌리일리월리월리윌리울리윌리울리일리울리울리윌리일리";
         // 1. 2글자씩 분리하기
-        String a = findWally.substring(0,2);
-        System.out.println(a);
         // 2. 2글자씩 분리한걸 반복하기
         for(int b = 0; b <= findWally.length(); b++) {
-            System.out.println(b);
+            System.out.println(findWally.substring(b,b+2));
 
         }
 
