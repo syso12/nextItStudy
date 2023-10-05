@@ -1,4 +1,6 @@
 package sungbok.submit04;
+import ch06_method.MethodMain;
+
 import java.util.Scanner;
 
 public class Submit04 {
@@ -38,6 +40,25 @@ public class Submit04 {
                 }
             }
         }
+
+//        // inputText가 "4" 인 경우
+//        int floor = Integer.parseInt(inputText);
+//
+//        // 입력받은 층에 대한 엘리베이터 A와의 위치 차이 구하기
+//        int diffA = Math.abs(elvatorA - floor); // 10 - 8 = 2
+//
+//        // 입력받은 층에 대한 엘리베이터 B와의 위치 차이 구하기
+//        int diffB = MethodMain.myAbs(elvatorB - floor); // 4 - 8 = -4 가 아닌 4가 나오게된다(math.abs)함수 사용
+
+        // 층수 차이가 같으면 위층에 있는 엘리베이터가 이동
+//        if(elevator A > elevator B){
+//
+//        }
+
+
+
+
+
     }
 }
 
