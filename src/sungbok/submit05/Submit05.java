@@ -16,27 +16,111 @@ public class Submit05 {
         String myBinaryStr = makeBinary(23);
         System.out.println(myBinaryStr);
 
+        // 4번 빈칸이 존재하는 트리 만들기
+        makeTriangle(4);
+        makeTriangle(5);
+
     }// main메소드 끝
 
-    public static String makeBinary(int num){
-        String resultt = "";
+    public static void makeTriangle(int floor){
 
-        while(num > 0){
-            num = num / 2;
-            if(num % 2 == 1){
-                resultt = num % 2+resultt;
-            } else {
-                resultt = 0+resultt;
+        //      *
+        //     * *
+        //    *   *
+        //   *     *
+        //  *********
+        // i=0, 빈칸은 3개 별은 1개
+        // i=1, 빈칸은 2개 별1개, 빈칸1개 별1개
+        // i=2, 빈칸은 1개 별1개, 빈칸3개 별1개
+        // i=3, 빈칸은 0개 별7개
+
+
+
+        //      *
+        //     * *
+        //    *   *
+        //   *     *
+        //  *       *
+        // ***********
+        // i=0, 빈칸은 4개 별은 1개
+        // i=1, 빈칸은 3개 별1개, 빈칸1개 별1개
+        // i=2, 빈칸은 2개 별1개, 빈칸3개 별1개
+        // i=3, 빈칸은 1개 별1개, 빈칸5개 별1개
+        // i=4, 빈칸은 0개 별9개
+
+        for(int i = 0; i < floor; i++){
+            String leftBlank = "";
+            for(int k = 0; k < floor-1-i; k++){
+                leftBlank += " ";
+            }
+            if(i == 0){
+                // 맨 위층
+                System.out.println(leftBlank + "*");
+            }else if(i == floor){
+                // 맨 밑층
+                String star = "";
+                for(int s = 0; s < (floor*2)-1; s++){
+                    star += "*";
+                }
+                System.out.println(star);
+            }else{
+                // 중간층
+                String innerBlank = "";
+                for(int b = 0; b < (i*2)-1; b++){
+                    innerBlank += " ";
+                }
+                System.out.println(leftBlank + "*" + innerBlank + "*");
             }
         }
+    }
+
+
+
+
+
+
+
+
+
+    public static String makeBinary(int num){
+        // 핵심은 문자열 나머지값을 빈 문자열안에 넣는다
+        String resultt = "";
+
+        // num이 23일때
+
+        resultt+= num % 2;// 1
+
+        num /= 2; // 11
+
+        resultt+= num % 2; // 1
+
+        num /= 2; // 5
+
+        resultt+= num % 2; // 1
+
+        num /= 2; // 2
+
+        resultt+= num % 2; // 0
+
+        num /= 2; // 1
+
+
+//        while(num > 0){
+//            num = num / 2;
+//            if(num % 2 == 1){
+//                resultt = num % 2+resultt;
+//            } else {
+//                resultt = 0+resultt;
+//            }
+//        }
 
 
         return resultt;
     }
     public static String reverseStr (String result){
-//        String example = "로꾸꺼 로꾸꺼";
+        String reverse = "";
         for(int i = result.length(); i >= 1; i--) {
-            String result1 = result.substring(i-1,i);
+            reverse+= result.substring(i-1,i);
             //System.out.print(result);
         }
 
