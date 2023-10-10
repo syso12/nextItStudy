@@ -331,15 +331,87 @@ public class ArrayMain {
 
 
         // 정렬 (알고리즘)
+        // 버블정렬은 왼쪽의 인덱스값과 오른쪽을 비교후
+        // 왼쪽이 클경우 오른쪽과 자리를 바꾸는 정렬
+        int[] intArr = {3, 5, 8, 2, 4, 1};
 
+        for(int i = 0; i < intArr.length - 1; i++){
+            // -1이 붙는거 알아보기 (모르겟음)
+            // 왼쪽이 오른쪽보다 큰지 비교
+            if(intArr[i] > intArr[i+1]) {
+                // 자리 바꾼다.
+//                swap(intArr, i, i+1);
+                int tmp = intArr[i];
+                intArr[i] = intArr[i+1];
+                intArr[i+1] = tmp;
+            }
+        }
+        System.out.println("");
+        printArray(intArr);
 
+        for(int k = 0; k < intArr.length - 1; k++){
+            for(int i = 0; i < intArr.length - 1 -k; i++){
+                // -1이 붙는거 알아보기 (모르겟음)
+                // 왼쪽이 오른쪽보다 큰지 비교
+                if(intArr[i] > intArr[i+1]) {
+                    // 왼쪽이 오른쪽보다 작은지 비교
+                    // if(intArr[i] < intArr[i+1]) { 등호를 바꾸면 내림차순
+                    // 자리 바꾼다.
+//                swap(intArr, i, i+1);
+                    int tmp = intArr[i];
+                    intArr[i] = intArr[i+1];
+                    intArr[i+1] = tmp;
+                }
+            }
+        }
+        System.out.println("");
+        printArray(intArr); // 오름차순
 
+        System.out.println("\n=======================================================\n");
 
+        // 다차원 배열
+        // 일차원 배열
+        int[] oneDirArr = {1, 2, 3};
+        // 이차원 배열
+        int[][] twoDirArr = { {1, 2, 3}, {4, 5, 6}, {7, 8, 9} };
+        // 1 2 3
+        // 4 5 6
+        // 7 8 9
 
+        // 2행 {4,5,6} 꺼내기
+        // 무조건 겉에 있는 {}의 인덱스 값이 기준
+        printArray(twoDirArr[1]);
 
+        // 3행 2열 {8}
+        // printArray(twoDirArr[2][1]); 왜 printArray는 안되는지
+        System.out.println(twoDirArr[2][1]);
 
+        // 3차원 배열
+        int[][][] threeDirArr = { { {1, 2, 3}, {4, 5, 6}, {7, 8, 9} } ,
+                                    { {10, 11, 12}, {13, 14, 15}, {16, 17, 18} },
+                                    { {19, 20, 21}, {22, 23, 24}, {25, 26, 27} } };
+        // {0~9} 0번 {10~19} 1번 {20~27} 2번
+        // 0층
+        // 1 2 3
+        // 4 5 6
+        // 7 8 9
+        // 1층
+        // 10 11 12
+        // 13 14 15
+        // 16 17 18
+        // 2층
+        // 19번 뽑아내기
+        System.out.println(threeDirArr [2][0][0]);
 
+        // 로또방 가서 자동 5천원 구매
+        // 로또 5줄짜리 나옴
+        // 7 12 24 33 42 44
+        // 17 22 24 34 37 41
+        // 9 13 21 32 34 37
+        // 7 12 24 33 32 44
+        // 7 12 24 33 32 44
 
+//        int[] oneLine = makeLotto();
 
 
 
@@ -391,4 +463,5 @@ public class ArrayMain {
             }
         }
     }
+
 }
