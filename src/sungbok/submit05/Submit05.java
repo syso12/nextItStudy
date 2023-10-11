@@ -19,6 +19,14 @@ public class Submit05 {
         // 4번 빈칸이 존재하는 트리 만들기
         makeTriangle(4);
         makeTriangle(5);
+        makeTriangle(12);
+
+        //      *
+        //     * *
+        //    *   *
+        //   *     *
+        //  *********
+
 
     }// main메소드 끝
 
@@ -72,7 +80,14 @@ public class Submit05 {
                 System.out.println(leftBlank + "*" + innerBlank + "*");
             }
         }
-    }
+
+
+
+
+    } // main 끝
+
+    // a = ? , b = ? a + b 합친 값을 리턴해주는 메소드를 만들어보자;
+    // ex awe = 10; , asd = 20;
 
 
 
@@ -80,11 +95,10 @@ public class Submit05 {
 
 
 
-
-
-    public static String makeBinary(int num){
+    public static String makeBinary (int num){
         // 핵심은 문자열 나머지값을 빈 문자열안에 넣는다
         String resultt = "";
+        String temp = "";
 
         // num이 23일때
 

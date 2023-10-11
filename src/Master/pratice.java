@@ -94,35 +94,55 @@ public class pratice {
         //수학기호로 4! 는 4 팩토리얼을 의미하며,
         //그 값은 4x3x2x1 = 24 입니다.
         //for문을 사용해서 10팩토리얼의 값을 출력해주세요.
-        int ab = 10;
-        for(int i = 1; i < 10; i++) {
-            ab= i*ab;
-        }
-        System.out.println(ab);
-
-        long sd = 15l;
-        // 값이 크므로 long을 쓰자
-        for(int s = 1; s < 15; s++) {
-            sd= s*sd;
-
-        }
-
-        System.out.println(sd);
-
-        // 윌리를 찾아라
-
-        String findWally = "윌리울리일리울리울리일리월리일리윌리월리울리일리일리월리일리윌리일리윌리일리월리월리윌리울리윌리울리일리울리울리윌리일리";
-        // 1. 2글자씩 분리하기
-        // 2. 2글자씩 분리한걸 반복하기
-        for(int b = 0; b <= findWally.length(); b++) {
-            System.out.println(findWally.substring(b,b+2));
-
-        }
-
-
-
-
-
-
+//        int ab = 10;
+//        for(int i = 1; i < 10; i++) {
+//            ab= i*ab;
+//        }
+//        System.out.println(ab);
+//
+//        long sd = 15l;
+//        // 값이 크므로 long을 쓰자
+//        for(int s = 1; s < 15; s++) {
+//            sd= s*sd;
+//
+//        }
+//
+//        System.out.println(sd);
+//
+//        // 윌리를 찾아라
+//
+//        String findWally = "윌리울리일리울리울리일리월리일리윌리월리울리일리일리월리일리윌리일리윌리일리월리월리윌리울리윌리울리일리울리울리윌리일리";
+//        // 1. 2글자씩 분리하기
+//        // 2. 2글자씩 분리한걸 반복하기
+//        for(int b = 0; b <= findWally.length(); b++) {
+//            System.out.println(findWally.substring(b,b+2));
+//
+//        }
+        // 1번 트리 만들기
+        makeTree(5);
+        makeTree(7);
+        // for문으로 만들자
+        //     *           i가 0일때 빈칸이 4칸 별이 1개
+        //    ***          i가 1일때 빈칸이 3칸 별이 3개
+        //   *****         i가 2일때 빈칸이 2칸 별이 5개
+        //  *******        i가 3일때 빈칸이 1칸 별이 7개
+        // *********       i가 4일때 빈칸이 0칸 별이 9개
+        //                 i가 1씩 증가할때 빈칸이 -1 별이 +2
+        // 총 돌아가는 for(makeTree(반복할숫자), 빈칸이 늘어나는for문, 별이 증가하는 for문 총for문이 3개가 필요
+    } // 메인 끝
+    public static int makeTree(int num) {
+        for (int i = 0; i < num; i++) {
+            String blank = "";
+            for (int w = 0; w < num; w++) {
+                blank += " ";
+            }
+                String star = "";
+                for (int k = 0; k < i; k++) {
+                    star += "*";
+                }
+            System.out.println(blank + star);
+            }
+        return num;
     }
+
 }

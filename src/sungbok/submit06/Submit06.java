@@ -133,6 +133,9 @@ public class Submit06 {
 //            }
 //        }
 //    } // main 끝
+
+
+
 //    public static int [] makeLotto(){
 //        int[] numArr = new int[6];
 //        int idx = 0;
