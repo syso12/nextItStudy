@@ -85,6 +85,7 @@ public class CollectionSet {
         HashSet<Integer> intSet = new HashSet<>();
         // intList 내부 요소들이 intSet에 담김
         intSet.addAll(intList);
+        System.out.println("\n================================\n");
         System.out.println(intSet); // 중복된 데이터는 하나만 남게 된다.
 
         intList.clear();
