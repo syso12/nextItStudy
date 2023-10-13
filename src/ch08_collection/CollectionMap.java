@@ -1,7 +1,6 @@
-package ch_08_collection;
+package ch08_collection;
 
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 

@@ -1,4 +1,4 @@
-package ch_08_collection;
+package ch08_collection;
 
 import java.util.ArrayList;
 import java.util.HashSet;

@@ -1,4 +1,4 @@
-package ch_08_collection;
+package ch08_collection;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -87,12 +87,13 @@ public class CollectionList {
         // 값이 들어있지않으면 size는 0
         ArrayList<String> tempList = new ArrayList<>();
         System.out.println(tempList.size());
+        System.out.println("\n================\n");
 
         // 인덱싱
         // .get(인덱스)
         // 인덱스값 가져오기 (배열은 [2])
         System.out.println(students.get(2));
-
+        System.out.println("\n================\n");
 
         // 해당 인덱스의 값 변경
         // .set(인덱스, 변경값)
