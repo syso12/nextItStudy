@@ -16,5 +16,15 @@ public class UtilClass {
         return (double)Math.round(num * one) / one;
 
     }
+    /*
+    * a부터 b사이의 랜덤 정수를 리턴하는 메소드
+    * @param a
+    * @param b
+    * @return
+    * */
+    public static int makeRandom(int a, int b){ // a ~ b까지 범위
+        return (int)(Math.random() * (b - a + 1)) + a;
+    }
+
 
 }

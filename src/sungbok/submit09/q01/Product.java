@@ -2,7 +2,7 @@ package sungbok.submit09.q01;
 
 public class Product {
 
-    String name;
+    String name; //private <- 캡슐화
     int price;
 
     public Product(String name, int price) {

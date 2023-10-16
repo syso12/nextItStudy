@@ -55,6 +55,8 @@ public class ProductMain {
 
 
         for (int i = 0; i < productsList.size(); i++) {
+            // prodList.get(i) ->Product 객체가 튀어나옴
+            // proList.get(i).getName()이 TV인것을 찾아야한다.
             if (productsList.get(i).name.equals("TV")) {
                 System.out.println(i);
             }
