@@ -18,12 +18,12 @@ public class Manual {
 
     @Override
     public String toString() {
-        return "Manual{" +
-                "hint=" + hint +
-                ", dice='" + dice + '\'' +
-                ", rule='" + rule + '\'' +
+        return "족보[" +
+                "번호=" + hint +
+                ", 족보이름='" + dice + '\'' +
+                ", 룰='" + rule + '\'' +
                 ", example='" + example + '\'' +
-                '}';
+                ']';
     }
 
     public int getHint() {
