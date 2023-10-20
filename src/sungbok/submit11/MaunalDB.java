@@ -8,7 +8,9 @@ public class MaunalDB {
     private MaunalDB(){
 
         diceRule.add(new Manual(diceRule.size()+1, "Aces", "1이 나온 주사위 눈의 총합. 최대 5점", "⚀ ⚀ ⚀ ⚄ ⚅ = 3점"));
+
         diceRule.add(new Manual(diceRule.size()+1, "Deuces", "2이 나온 주사위 눈의 총합. 최대 10점", "⚁ ⚁ ⚁ ⚄ ⚅ = 6점"));
+
         diceRule.add(new Manual(diceRule.size()+1, "Threes", "3이 나온 주사위 눈의 총합. 최대 15점", "⚂ ⚂ ⚂ ⚄ ⚅= 9점"));
         diceRule.add(new Manual(diceRule.size()+1,"Fours", "4가 나온 주사위 눈의 총합. 최대 20점", "⚀ ⚁ ⚃ ⚃ ⚃  = 12점"));
         diceRule.add(new Manual(diceRule.size()+1, "Fives", "5가 나온 주사위 눈의 총합. 최대 25점", "⚀ ⚁ ⚄ ⚄ ⚄  = 15점"));

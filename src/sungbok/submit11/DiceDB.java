@@ -1,5 +1,6 @@
 package sungbok.submit11;
 
-public class DiceDB {
+import java.util.Arrays;
 
+public class DiceDB {
 }

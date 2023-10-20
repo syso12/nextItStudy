@@ -1,6 +1,7 @@
 package sungbok.submit11;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Scanner;
 // 야추 주사위
 // 주사위클래스와 사람클래스를 따로두어서 사람이 주사위를 굴리도록 만든다
@@ -19,8 +20,23 @@ public class DiceMain {
         MaunalDB maunalDB = MaunalDB.getInstance();
 
         Scanner scan = new Scanner(System.in);
-        System.out.println("야추 주사위  ⚀ ⚁ ⚂ ⚃ ⚄ ⚅");
-        System.out.println("참가자의 이름을 입력하세요");
+        System.out.println("##   ##      ##    #####   ##   ##  #####    \n" +
+                "##   ##    #####  #######  ##   ##  ######   \n" +
+                "##   ##    ## ##  ##   ##  ##   ##      ##   \n" +
+                "#######   ##  ##  ##       #### ##      ##   \n" +
+                "  ###     ######  ##   ##  ##   ##      ##   \n" +
+                "  ###    ##   ##  #######  ##   ##      ##   \n" +
+                "  ###    ##   ##   #####   ##   ##      ##   ");
+        System.out.println("");
+        System.out.println("");
+        System.out.println("#######   ######   #####    ######  \n" +
+                "##   ##   ######  #######  #######  \n" +
+                "##   ##     ##    ##   ##  ##       \n" +
+                "###  ##     ##    ##       #######  \n" +
+                "###  ##     ##    ##   ##  ##       \n" +
+                "###  ##   ######  #######  #######  \n" +
+                "#######   ######   #####    ######  ");
+        System.out.println("참가자의 이름을 입력하세요 ⚀ ⚁ ⚂ ⚃ ⚄ ⚅");
         System.out.print(">>> ");
         String name = scan.nextLine();
 
@@ -41,47 +57,130 @@ public class DiceMain {
                     }
                 System.out.println("주사위 눈");
                 System.out.println(Arrays.toString(dice));
-                while (true){
+                while (true) {
                     System.out.println("행동을 선택해주세요");
                     System.out.println("1.주사위 굴리기 | 2.족보 확인하기 | 3. STOP");
                     int select = Integer.parseInt(scan.nextLine());
-                    if(select == 1) {
-                        System.out.println("keep할 주사위를 선택해주세요1");
+//                    int[] choice1 = new int[0];
+                    if (select == 1) {
+                        System.out.println("keep할 주사위를 선택해주세요");
 //                        System.out.println(Arrays.toString(dice));
-                        int [] choice = new int[5];
-                        for(int a = 0; a < choice.length; a++){
-                            choice[a]=(int)(Math.random() * 6) + 1;
-                        }
+                        int[] choice = new int[5];
+//                        for (int a = 0; a < choice.length; a++) {
+//                            choice[a] = (int) (Math.random() * 6) + 1;
+//                        }
                         int poket = Integer.parseInt(scan.nextLine());
-                        choice[poket-1] = dice[poket-1];
+                        choice[poket - 1] = dice[poket - 1];
 
-                        System.out.println(poket + "가 담겼습니다");
+                        System.out.println(poket + "번째 주사위가 담겼습니다");
+//                        System.out.println(Arrays.toString(dice));
                         System.out.println(Arrays.toString(choice));
-                        System.out.println("------------------------");
+//                        System.out.println("------------------------");
 
 
-                        System.out.println("keep할 주사위를 선택해주세요2");
+                        System.out.println("keep할 주사위를 선택해주세요");
+//                        choice1 = new int[5];
+//                        for (int b = 0; b < choice1.length; b++) {
+//                            choice1[b] = (int) (Math.random() * 6) + 1;
+//                        }
                         int poket1 = Integer.parseInt(scan.nextLine());
-                        choice[poket1-1] = dice[poket1-1];
+                        choice[poket1 - 1] = dice[poket1 - 1];
+//                        int poket2 = Integer.parseInt(scan.nextLine());
+//                        choice1[poket2-1] = choice[poket2-1];
+                        System.out.println(poket1 + "번째 주사위가 담겼습니다");
+//                        System.out.println(Arrays.toString(dice));
                         System.out.println(Arrays.toString(choice));
-                        int [] choice1 = new int[5];
-                        for(int b = 0; b < choice1.length; b++){
-                            choice1[b]=(int)(Math.random() * 6) +1;
+//                        Arrays.sort(choice1);
+//                        System.out.println(Arrays.toString(choice1));
+//                        System.out.println("------------------------");
+//                        System.out.println(Arrays.toString(choice));
+                        Arrays.sort(choice);
+                        for (int i = 0; i < choice.length / 2; i++) {
+                            int temp = choice[i];
+                            choice[i] = choice[choice.length - 1 - i];
+                            choice[choice.length - 1 - i] = temp;
                         }
-                        int poket2 = Integer.parseInt(scan.nextLine());
-                        choice1[poket2-1] = choice[poket2-1];
-                        System.out.println(poket2 + "가 담겼습니다");
 
-
-                        System.out.println("keep할 주사위를 선택해주세요3");
-                        int poket3 = Integer.parseInt(scan.nextLine());
-                        choice2[poket3-1] = choice1[poket3-1];
-                        int [] choice2 = new int[5];
-                        for(int c = 0; c < choice2.length; c++){
-                            choice2[c]=(int)(Math.random() * 6) +1;
+                        for(int i = 2; i < choice.length; i++){
+                            choice[i] = (int)(Math.random() * 6) + 1;
                         }
-                        System.out.println(poket3 + "가 담겼습니다.");
-                        System.out.println("최종 주사위는 " + Arrays.toString(choice2) +"입니다.");
+                        Arrays.sort(choice);
+                        System.out.println("최종 주사위는" + Arrays.toString(choice) +"입니다.");
+
+                        int score = 0;
+                        for(int num : choice){
+                            score+= num;
+                        }
+                        System.out.println("합산 점수는" + score + "입니다.");
+
+                        // 룰과 유사한 족보 점수 찾기
+                        // 족보별 정규표현식
+                        // 더블 regex = "(\\d)\\1";
+                        // 스트레이트
+                        // 트리플 regex = "(\\d)\\1{2}";
+
+                        boolean FourOfKind = false;
+                        boolean two = false;
+                        boolean three = false;
+                        boolean Yacht = false;
+
+                        int [] counts = new int[7];
+
+                        for (int num : choice){
+                            counts[num]++;
+                        }
+                        for(int i = 0; i < choice.length; i++){
+                            int count = 1;
+                            while (i + 1 < choice.length && choice[i]==choice[i+1]) {
+                                count++;
+                                i++;
+                            }
+                            if (count == 4){
+                                FourOfKind = true;
+                            }else if(count == 2){
+                                two = true;
+                            }else if(count == 3){
+                                three = true;
+                            } else if (count == 5) {
+                                Yacht = true;
+
+                            }
+
+                        }
+
+                        if(two && three){
+                            System.out.println(Arrays.toString(choice) +"는 FullHouse입니다.");
+                            score = 30;
+                        }
+                        else if(two){
+                            System.out.println(Arrays.toString(choice) +"는 더블입니다.");
+                            score = 10;
+                        }
+                        else if(three) {
+                            System.out.println(Arrays.toString(choice) + "는 트리플 입니다.");
+                            score = 20;
+                        }else if(FourOfKind){
+                            System.out.println(Arrays.toString(choice) + "FourOfKind입니다.");
+                            score = 20;
+                        }
+                        else if(Yacht){
+                            System.out.println(Arrays.toString(choice) + "Yacht입니다.");
+                            score = 50;
+                        }
+                        else{
+                            System.out.println("아무것도 없었다.");
+                        }
+                        System.out.println("최종점수는 " + score + "입니다.");
+//
+//                        System.out.println("keep할 주사위를 선택해주세요3");
+//                        int poket3 = Integer.parseInt(scan.nextLine());
+//                        choice2[poket3-1] = choice1[poket3-1];
+//                        int [] choice2 = new int[5];
+//                        for(int c = 0; c < choice2.length; c++){
+//                            choice2[c]=(int)(Math.random() * 6) +1;
+//                        }
+//                        System.out.println(poket3 + "가 담겼습니다.");
+//                        System.out.println("최종 주사위는 " + Arrays.toString(choice2) +"입니다.");
 
 
                         // 배열에 있는 주사위 눈이 맘에들면 keep
@@ -90,18 +189,57 @@ public class DiceMain {
                         // keep한 주사위 빼고 나머지는 다시 돌리자(총3번)
                         // 어떻게?
                     } else if (select == 2) {
+                        // 족보 확인하기
                         MaunalDB.readMaunal();
-                    } else {
+                    } else if(select == 3){
                         break;
+                        // 스탑을 하면 점수를 합산
+                    }else{
+                        System.out.println("잘못입력함ㅋ");
                     }
-
                 }
             } else if (command == 2) {
                 // 족보 확인하기
                 MaunalDB.readMaunal();
+
             } else if (command == 3) {
                 // 점수 보기
             } else if (command == 4) {
+                System.out.println("\n" +
+                        "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n" +
+                        "⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⠿⠿⢿⡿⠟⢿⣿⣿⡿⠿⠻⠿⣿⡿⠟⢿⣿⣿⠿⠿⠿⠿⢿⡿⠛⢿⣿⣿⣿⣿⣿⠿⠿⠛⠛⠻⠿⣿⣿⣿⠿⠿⣿⣿⣿⣿⣿⣿⣿⣿⠛⠛⣿⡟⠛⣿⣿⣿⣿⣿⣿⣿\n" +
+                        "⣿⣿⣿⣿⣿⣿⣿⣿⡤⠀⠀⣤⣼⡇⠀⠘⣿⠏⠀⣤⡄⠀⢹⠇⠀⠘⣿⡇⠀⢠⣤⣤⣼⠇⠀⣸⣿⣿⣿⡿⠁⢀⣤⣤⣤⣤⠀⠈⣿⣿⠀⠀⠛⠛⠛⠛⠛⢻⣿⣿⠀⢸⣿⠇⢀⣿⣿⣿⣿⣿⣿⣿\n" +
+                        "⣿⣿⣿⣿⣿⣿⣿⡋⠀⣠⡀⠈⣹⠀⠀⣶⣿⣄⠀⠉⠀⣠⣾⠀⠀⣶⣿⠁⠀⣿⣿⣿⣿⠀⠀⠉⣿⣿⣿⣧⠀⠀⠉⠉⠉⠉⠀⣰⣿⡟⠒⠒⠂⠀⠐⠒⠒⢺⣿⡇⠀⣾⣿⠀⢸⣿⣿⣿⣿⣿⣿⣿\n" +
+                        "⣿⣿⣿⣿⣿⣿⣿⠁⠈⠛⠛⠛⠋⠀⢰⣿⣿⣿⠋⠉⣿⠟⠁⢰⣾⣿⡟⠀⢠⣿⣿⣿⡇⠀⢰⣾⣿⣿⣿⣿⡟⠒⢲⣶⠒⠒⣿⣿⣿⠖⠒⠒⠒⠒⠒⠒⠒⣾⣿⣁⣠⣿⣇⣀⣿⣿⣿⣿⣿⣿⣿⣿\n" +
+                        "⣿⣿⣿⣿⣿⣿⡟⠀⠀⠒⠒⠂⠀⠀⣼⣿⡋⠁⣀⡀⠈⢀⣀⠀⣹⣿⠇⠀⠀⠀⠀⢀⠇⠀⣾⣿⣿⣿⡟⠀⠀⠀⠀⠀⠀⠀⠀⣿⡟⠀⠀⠛⠛⠛⠛⠀⠀⣿⡏⠀⢸⣿⠀⢀⣿⣿⣿⣿⣿⣿⣿⣿\n" +
+                        "⣿⣿⣿⣿⣿⣿⣷⣶⣶⣶⣶⣶⣶⣶⣿⣿⣿⣾⣿⣿⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣗⣐⣶⣶⣶⣶⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n" +
+                        "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠁⠈⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠛⣿⣿⣿⣿⣿⣿⡿⠟⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n" +
+                        "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡀⠀⠙⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⢹⣿⣿⡿⠟⠋⢀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n" +
+                        "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⣀⠀⠀⠙⠛⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠘⠋⣁⣠⣴⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n" +
+                        "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠋⠙⠒⠤⢀⡀⠀⠈⠉⠙⠛⠛⠿⠿⠿⢿⣿⠿⠿⠿⡿⠿⠿⠿⠿⠿⠿⠛⠛⠛⢉⣉⣥⡀⠀⠰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n" +
+                        "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠉⠀⠒⠂⠤⠤⠀⠀⢀⣀⣀⡀⠀⢀⣀⠀⠀⠠⠤⠄⠐⠒⠈⠉⠁⠀⠉⠃⠀⠀⣿⣿⡿⢟⠻⣟⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n" +
+                        "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠁⠀⠀⠀⠀⠹⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n" +
+                        "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⢈⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n" +
+                        "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇⠀⠀⠀⠀⡠⠖⢶⡀⠀⠀⠈⣧⡀⠀⠀⠀⠀⣠⡔⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n" +
+                        "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⣼⠁⢀⣼⡇⠀⠀⢰⣿⣿⣿⣿⣿⡄⠻⠁⠀⠀⠀⠀⠀⠀⢀⠴⠒⢶⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n" +
+                        "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⣿⣷⣿⣿⠁⠀⠀⣾⣿⣿⣿⣿⣿⣿⡄⠀⠀⠀⠀⠀⠀⠀⡎⠀⠀⣼⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n" +
+                        "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⠀⠀⠀⠀⠹⠿⠿⠃⠀⠀⢰⣿⣿⣿⣿⣿⣿⣿⠃⠀⠀⠀⠀⠀⠀⠀⣿⣶⣾⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n" +
+                        "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣆⠀⠀⠀⠀⠀⠀⠀⠀⣰⣿⣿⣿⠿⠛⠻⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⢿⣿⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n" +
+                        "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣄⣀⣀⣀⣀⣴⣾⣿⣿⣿⣧⣤⡀⠀⠈⢻⡄⠀⠀⠀⠀⠀⠀⠀⠀⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n" +
+                        "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠋⠙⢻⣿⣿⣷⡄⠀⠣⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n" +
+                        "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠁⠀⣴⠟⠻⣿⣿⣿⣿⣿⣷⣦⣤⣾⣿⣿⣿⣿⡆⠀⠁⢄⡀⠀⠀⠀⠀⠀⢀⠠⠐⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n" +
+                        "⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠀⠀⠀⠀⠘⠄⠀⠀⠙⠻⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⠃⠀⠀⠀⠈⠉⠀⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n" +
+                        "⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠈⢶⣦⣤⣀⣀⠀⠈⠉⠉⠉⠛⠉⠙⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡜⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n" +
+                        "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣄⠀⠀⠀⠀⠀⠀⠀⠈⣿⣿⣿⡿⠋⠀⠀⠀⠀⠀⠀⠠⠤⠤⠄⠀⠀⢤⡤⠤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⣷⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n" +
+                        "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣤⡀⠀⠀⠀⠀⠀⢸⣿⡟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n" +
+                        "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⡀⠀⠀⠀⠀⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠔⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n" +
+                        "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣶⡀⠀⠘⡀⠀⠀⠀⠀⠀⠀⠀⡠⠒⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n" +
+                        "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡀⠀⠘⢦⣀⡀⠀⠀⠀⠊⠀⠀⠀⠔⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n" +
+                        "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣄⡀⠀⠀⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢿⣿⣿⣿⣿⣿⣿⣿⣿\n" +
+                        "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣶⡀⠁⠀⠀⠀⠀⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣿⣿⣿⣿⣿⣿⣿⣿\n" +
+                        "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⠔⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿\n" +
+                        "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿\n" +
+                        "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⣿⣿⣿⣿⣿⣿\n");
                 // 신고하기
 
             } else if (command == 5) {
