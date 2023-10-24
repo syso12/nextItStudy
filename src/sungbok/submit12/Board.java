@@ -1,5 +1,8 @@
 package sungbok.submit12;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Board {
     private int num;
     private String title;
@@ -46,8 +49,11 @@ public class Board {
         return day;
     }
 
-    public void setDay(String day) {
-        this.day = day;
+    public void setDay() {
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
+        this.day = sdf.format(date);
+
     }
 
     public String getContent() {
