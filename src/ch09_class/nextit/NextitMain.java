@@ -232,7 +232,7 @@ public class NextitMain {
             System.out.println(stu);
         }
 
-        System.out.println("\n====================================================\n");
+        System.out.println("\n========================버블============================\n");
 
         // stuList에 담겨있는 학생들의 레벨을 기준으로 정렬
         // 버블정렬
@@ -258,7 +258,7 @@ public class NextitMain {
             System.out.println((i+1) + "등. " + stuList.get(i));
         }
 
-        System.out.println("\n===========================================\n");
+        System.out.println("\n=====================버블======================\n");
 
         // Collections.sort() 사용
         // stuList.get(i) < stuList.get(i+1) 와 유사한 상태가 되어서
