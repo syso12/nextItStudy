@@ -1,6 +1,6 @@
-package sungbok.submit12;
+package sungbok.submit12.Board;
 
-public class CartoonBoard extends Board{
+public class CartoonBoard extends Board {
     private String image;
 
     public CartoonBoard() {

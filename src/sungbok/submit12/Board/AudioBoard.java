@@ -1,9 +1,9 @@
-package sungbok.submit12;
+package sungbok.submit12.Board;
 
-public class AudioBoard extends Board{
+public class AudioBoard extends Board {
     private String audio;
 
-    public AudioBoard () {
+    public AudioBoard() {
         super();
     }
 
@@ -18,4 +18,6 @@ public class AudioBoard extends Board{
     public void setAudio(String audio) {
         this.audio = audio;
     }
+
+    ;
 }

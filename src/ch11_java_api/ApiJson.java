@@ -97,7 +97,7 @@ public class ApiJson {
 
         jsonObject.put("태연",taeyeon);
         System.out.println(jsonObject);
-
+        System.out.println("\n==========================값 꺼내기 ===============================\n");
         // Key에 대한 Value 꺼내보기
         System.out.println(jsonObject.get("name"));
         // .get으로 꺼낼시 Object 타입으로 리턴됨
@@ -125,7 +125,7 @@ public class ApiJson {
         // 순서에 상관없이 담기면 JSON은 값을 어떻게 꺼내지??
         // json parse를 사용하자(사이트)
 
-        System.out.println("\n======================================================\n");
+        System.out.println("\n==========================값꺼내기============================\n");
 
         // 서버로 부터 JSON String을 받았다면
         String serverResponse = "{\"name\":\"아이유\",\"songList\":[\"좋은날\",\"블루밍\",\"레옹\",100],\"age\":31,\"태연\":{\"songs\":[\"만약에\",\"INVU\",\"사계\"],\"name\":\"태연\",\"age\":\"34\"}}";

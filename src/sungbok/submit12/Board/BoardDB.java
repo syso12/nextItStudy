@@ -1,4 +1,4 @@
-package sungbok.submit12;
+package sungbok.submit12.Board;
 
 import java.util.ArrayList;
 

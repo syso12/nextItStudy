@@ -1,17 +1,14 @@
-package sungbok.submit12;
-
-import ch09_class.nextit.NextStudent;
+package sungbok.submit12.DateBoard;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.Date;
 
 public class DateBoardMain {
 
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args) throws ParseException, org.json.simple.parser.ParseException {
         // dbList에 랜덤 날짜를 가지는 DateBoard 객체 100개 삽입
         ArrayList<DateBoard> dbList = new ArrayList<DateBoard>();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
@@ -51,7 +48,7 @@ public class DateBoardMain {
         for (int k = 0; k < dbList.size() - 1; k++) {
             for (int i = 0; i < dbList.size() - 1 - k; i++) {
                 Date tdate1 = sdf.parse(dbList.get(i).getDate());
-                Date tdate2 = sdf.parse(dbList.get(i+1).getDate());
+                Date tdate2 = sdf.parse(dbList.get(i + 1).getDate());
 
                 Long Milltime = tdate2.getTime() - tdate1.getTime();
                 if (Milltime > 0) {
@@ -78,7 +75,7 @@ public class DateBoardMain {
         for (int k = 0; k < dbList.size() - 1; k++) {
             for (int i = 0; i < dbList.size() - 1 - k; i++) {
                 Date tdate1 = sdf.parse(dbList.get(i).getDate());
-                Date tdate2 = sdf.parse(dbList.get(i+1).getDate());
+                Date tdate2 = sdf.parse(dbList.get(i + 1).getDate());
 
                 Long Milltime = tdate1.getTime() - tdate2.getTime();
                 if (Milltime > 0) {
@@ -111,51 +108,91 @@ public class DateBoardMain {
 
         //System.out.println(sdf.format(tocal.getTime()));
 
-        tocal.add(Calendar.DATE,-30);
+        tocal.add(Calendar.DATE, -30);
 
         // 오늘 기준 30일전 날짜
-         //System.out.println(sdf.format(tocal.getTime()));
+        //System.out.println(sdf.format(tocal.getTime()));
         Date date4 = tocal.getTime();
         // long month = sdf.parse(date4.getTime());
         //System.out.println(date4.getTime());
 
         // 이거를 long타입으로 형변환 ㄱㄱ
 
-        for(int i = 0; i < dbList.size(); i++){
+        for (int i = 0; i < dbList.size(); i++) {
             Date date3 = sdf.parse(dbList.get(i).getDate());
             // 각 게시글 날짜 long타입
-             //System.out.println(date3.getTime());
-            if(date3.getTime() > date4.getTime()){
+            //System.out.println(date3.getTime());
+            if (date3.getTime() > date4.getTime()) {
                 System.out.println(dbList.get(i));
             }
         }
 
         System.out.println("\n=======================이번달 작성된 글=============================\n");
 
-        Date date1 = new Date();
-        sdf.format(date1.getTime());
-
-        System.out.println(date1.getTime());
-
         Calendar toCal = Calendar.getInstance();
 
-        int temp = toCal.get(Calendar.MONTH)+1;
+        int temp = toCal.get(Calendar.MONTH) + 1;
         System.out.println(temp);
 
         // 10월을 뽑았고
         // db리스트에서 month가 10월과 같은지 비교
         // 같은거만 출력
 
-        for(int i = 0; i < dbList.size(); i++) {
-            Date tdate1 = sdf.parse(dbList.get(i).getDate());
-            SimpleDateFormat sdff = new SimpleDateFormat("yyyy.MM");
-            String dat = sdff.format(tdate1);
-            if(temp == Integerdat()){
+        // 이렇게 풀면 22년 10월도 나옴;;;
+//        for(int i = 0; i < dbList.size(); i++) {
+//            Date tdate1 = sdf.parse(dbList.get(i).getDate());
+//            SimpleDateFormat sdff = new SimpleDateFormat("yyyy.MM");
+//            sdff.format(tdate1);
+//
+//            Calendar toCal1 = Calendar.getInstance();
+//            toCal1.setTime(tdate1);
+//
+//            int temp1 = toCal1.get(Calendar.MONTH)+1;
+//            if(temp == temp1){
+//                 System.out.println(dbList.get(i));
+//            }
+//        }
+
+        System.out.println("\n=========================6월 달력===============================");
+
+        for (int i = 0; i < dbList.size(); i++) {
+            Date temp11 = sdf.parse(dbList.get(i).getDate());
+
+            Calendar tempCal = Calendar.getInstance();
+            tempCal.setTime(temp11);
+
+            // System.out.println(tempCal.get(Calendar.MONTH));
+
+            // System.out.println(temp11.getYear());
+            // .getYear , .getMonth는 더이상 사용되지않는 명령어
+            // System.out.println(temp11.getMonth());
+
+            if (tempCal.get(Calendar.MONTH) + 1 == 6 && tempCal.get(Calendar.YEAR) == 2023) {
                 System.out.println(dbList.get(i));
             }
+
+
+            System.out.println("\n=========================7월14일~8월 21일 사이에 생성된 날짜 달력===============================");
+
+            String left = "2023.07.14 00:00:00";
+            String right = "2023.08.21 23:59:59";
+
+            Date leftDate = sdf.parse(left);
+            Date rightDate = sdf.parse(right);
+
+            // leftDate 의 long 타입 날짜 => 16000
+            // rightDate 의 long 타입 날짜 => 19000
+            // dbList.get(i).getDate() 날짜의 long타입 날짜가
+            // 16000 < x < 19000 에 해당하는 객체만 출력
+            for (int w = 0; w < dbList.size(); w++) {
+                Date temp2 = sdf.parse(dbList.get(w).getDate());
+
+                if (leftDate.getTime() <= temp2.getTime()
+                        && temp2.getTime() <= rightDate.getTime()) {
+                    System.out.println(dbList.get(w));
+                }
+            }
         }
-
-
     }
 }
 

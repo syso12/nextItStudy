@@ -1,6 +1,4 @@
-package sungbok.submit12;
-
-import ch09_class.member.MemberDB;
+package sungbok.submit12.Board;
 
 import java.util.Scanner;
 

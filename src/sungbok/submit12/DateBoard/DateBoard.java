@@ -1,4 +1,4 @@
-package sungbok.submit12;
+package sungbok.submit12.DateBoard;
 
 public class DateBoard {
     private String title;
