@@ -6,7 +6,7 @@ public class Student {
 
 
     // 필드변수를 private으로 두고
-    // 필드변수에대핫 Getter, Setter를 만드는 행위
+    // 필드변수에대한 Getter, Setter를 만드는 행위
     // 캡슐화 라고 한다.(Encapsulation)
    private String name;
    private int kor;

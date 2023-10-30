@@ -9,6 +9,7 @@ public class quest1 {
     public static void main(String[] args) throws ParseException {
 
         // 7개 도시 중 가장 냉면 값이 저렴한 도시와 그 가격을 찾아 출력해보세요.
+        // json을 볼때는 jsonPaser(인터넷검색)로 먼저 파악을 해두자
         // city에서 도시를 뽑고
         // fields에서 id가 냉면인것을 뽑고
         // records에서 냉면가격이 제일 싼가격을 뽑아야??
@@ -64,6 +65,23 @@ public class quest1 {
         // 이거를 이용하면 될듯
 
 
+        // 선생님 풀이
+        long minPrice = (long)((JSONObject) records.get(0)).get("냉면");
+        for(int i = 0; i < records.size(); i++){
+            JSONObject cityy = (JSONObject) records.get(i);
+            if(minPrice > (long)cityy.get("냉면")){
+                minPrice = (long)cityy.get("냉면");
+            }
+        }
+        System.out.println("냉면 최소값: " + minPrice);
+        for(int i = 0; i < records.size(); i++){
+            JSONObject cityy = (JSONObject) records.get(i);
+            if(minPrice == (long)cityy.get("냉면")){
+                System.out.println("냉면이 제일 싼도시 " + cityy.get("시도명"));
+            }
+        }
+
+
 //        for(int i = 0; i < records.size(); i++){
 //            records.get(i).
 //        }
@@ -71,12 +89,20 @@ public class quest1 {
 
         // 이 문제도 버블정렬?
         // 평균이니까 정렬을 할필요는 없다
-        for(int i = 0; i < records.size()-1; i++){
-            JSONObject
+//        for(int i = 0; i < records.size()-1; i++){
+//            JSONObject
+//
+//            }
+//        }
 
-            }
+        // 선생님 풀이
+        long totalPrice = 0;
+        for(int i = 0; i < records.size(); i++){
+            JSONObject cityy = (JSONObject) records.get(i);
+            totalPrice +=(long)cityy.get("자장면");
         }
-
+        double avgPrice = totalPrice / records.size();
+        System.out.println("자장면 평균가격 " +avgPrice + "원");
 
 
 
