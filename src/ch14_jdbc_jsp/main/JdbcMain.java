@@ -138,11 +138,19 @@ public class JdbcMain {
 
                         } else if (select == 3) {
                             // 글 삭제
+
                             System.out.println("글 번호 입력");
                             int no = Integer.parseInt(scan.nextLine());
 
-                            // 해당 글 번호인 게시글의 del_yn = 'Y'로 UPDATE 해주기
+                            BoardDTO board = new BoardDTO();
 
+                            if(login.getMemId().equals(board.getBoId())){
+                                System.out.println("성공");
+                                boardService.boardUpdate(no);
+                            }else{
+                                System.out.println("실패");
+                            }
+                            // 해당 글 번호인 게시글의 del_yn = 'Y'로 UPDATE 해주기
 
                             // @글 삭제시 해당 게시글이 현재 로그인한 사람이 작성한
                             // 게시글이어야만 삭제 가능

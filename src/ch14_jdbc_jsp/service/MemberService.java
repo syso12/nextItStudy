@@ -10,6 +10,8 @@ import java.util.ArrayList;
 
 // ConnectionPool로부터 Connection객체 대여/반납해가며
 // DAO의 메소드에 대한 예외처리 담당
+// main에서 실행문 작성 만드는곳
+// homapage 에서 BoardDB같은거라고 생각 하자
 public class MemberService {
 
     private MemberService(){}

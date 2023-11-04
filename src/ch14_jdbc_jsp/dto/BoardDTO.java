@@ -10,6 +10,7 @@ public class BoardDTO {
     private String boDate;      /* 작성일 */
     private String memName;     /* 작성자닉네임 */
 
+
     public BoardDTO(int boNo, String boTitle, String boContent, String boId, String boDate, String memName) {
         this.boNo = boNo;
         this.boTitle = boTitle;

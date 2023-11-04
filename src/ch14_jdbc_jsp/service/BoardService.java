@@ -45,8 +45,6 @@ public class BoardService {
     public void writeBoard(BoardDTO board){
         Connection conn = cp.getConnection();
 
-
-
         try {
             dao.writeBoard(conn,board);
             System.out.println("글작성 성공");
@@ -73,6 +71,20 @@ public class BoardService {
         }
 
         return result;
+    }
+
+    // 글 업데이트
+    public void boardUpdate(int boNo){
+        Connection conn = cp.getConnection();
+
+        try {
+            dao.boardUpdate(conn, boNo);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            cp.releaseConnection(conn);
+        }
+
     }
 
 

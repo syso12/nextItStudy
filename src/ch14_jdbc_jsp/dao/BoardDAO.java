@@ -1,7 +1,6 @@
 package ch14_jdbc_jsp.dao;
 
 import ch14_jdbc_jsp.dto.BoardDTO;
-import ch14_jdbc_jsp.dto.MemberDTO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -159,22 +158,27 @@ public class BoardDAO {
 
     // 게시글 삭제(UPDATE) 메소드 작성
 
-    public BoardDTO boardUpdate (Connection conn, int BoNo) {
+    public int boardUpdate(Connection conn, int boNo) throws SQLException {
         StringBuffer query = new StringBuffer();
         query.append("   UPDATE                       ");
         query.append("      boards                       ");
         query.append("   SET                       ");
         query.append("      del_yn = 'Y'                       ");
+        query.append("   WHERE 1=1                          ");
+        query.append("   AND   bo_no = ?                         ");
 
-        try {
-            PreparedStatement ps = conn.prepareStatement(query.toString());
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        PreparedStatement ps = conn.prepareStatement(query.toString());
+
+        int idx = 1;
+
+        ps.setInt(idx, boNo);
+
+        int result = ps.executeUpdate();
 
 
+        ps.close();
+
+
+        return result;
     }
-
-
-
 }
