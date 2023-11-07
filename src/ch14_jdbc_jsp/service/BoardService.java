@@ -74,6 +74,7 @@ public class BoardService {
     }
 
     // 글 업데이트
+    // void가 아닌 int 를 넣는다면 try안에서 값의 결과를 출력할수있다
     public void boardUpdate(int boNo){
         Connection conn = cp.getConnection();
 

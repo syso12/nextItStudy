@@ -159,13 +159,16 @@ public class BoardDAO {
     // 게시글 삭제(UPDATE) 메소드 작성
 
     public int boardUpdate(Connection conn, int boNo) throws SQLException {
+        // 파라미터로 String boId도 추가 해야 아이디도 확인가능
         StringBuffer query = new StringBuffer();
         query.append("   UPDATE                       ");
-        query.append("      boards                       ");
-        query.append("   SET                       ");
-        query.append("      del_yn = 'Y'                       ");
-        query.append("   WHERE 1=1                          ");
-        query.append("   AND   bo_no = ?                         ");
+        query.append("      boards                    ");
+        query.append("   SET                          ");
+        query.append("      del_yn = 'Y'              ");
+        query.append("   WHERE 1=1                    ");
+        query.append("   AND   bo_no = ?              ");
+        // 작성자와 로그인 아이디가 같을경우 사용할수있는 쿼리
+        // query.append("   AND   bo_id = ?              ");
 
         PreparedStatement ps = conn.prepareStatement(query.toString());
 
