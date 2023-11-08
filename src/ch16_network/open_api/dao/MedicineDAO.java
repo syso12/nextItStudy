@@ -21,16 +21,16 @@ public class MedicineDAO {
 
     public int insertMedicine(Connection conn, MedicineDTO medicine) throws SQLException {
         StringBuffer query = new StringBuffer();
-        query.append("   INSERT INTO        ");
-        query.append("          medicines (        ");
+        query.append("   INSERT INTO          ");
+        query.append("          medicines (   ");
         query.append("        entp_name       ");
         query.append("      , item_name       ");
-        query.append("      , efcy_qesitm       ");
-        query.append("      ) VALUES (      ");
-        query.append("        ?      ");
-        query.append("       , ?      ");
-        query.append("       , ?      ");
-        query.append("        )      ");
+        query.append("      , efcy_qesitm     ");
+        query.append("      ) VALUES (        ");
+        query.append("        ?               ");
+        query.append("       , ?              ");
+        query.append("       , ?              ");
+        query.append("        )               ");
 
         PreparedStatement ps = conn.prepareStatement(query.toString());
 
@@ -48,6 +48,8 @@ public class MedicineDAO {
     }
 
     // 약 찾기 메소드
+    // 리스트에서 원하는 결과값을 출력해야 되기 때문에
+    // ArrayList에서 찾는게 맞다.
 
     public ArrayList<MedicineDTO> mediList(Connection conn) throws SQLException {
         StringBuffer query = new StringBuffer();
@@ -58,7 +60,15 @@ public class MedicineDAO {
         query.append("   FROM            ");
         query.append("      medicines    ");
 
+        // query.append(괄호 안에 %??%를 넣는것이 아니라
+//        query.append("   WHERE 1=1   ");
+//        query.append("   AND efcy_qestim = '%?%'    ");
+
+
         PreparedStatement ps = conn.prepareStatement(query.toString());
+
+        // setString안에 %?%를 사용해야 한다
+        // ps.setString(1,"두통");
 
         ResultSet rs = ps.executeQuery();
 

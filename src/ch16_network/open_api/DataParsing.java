@@ -62,6 +62,14 @@ public class DataParsing {
             medicineService.insertMedicine(medicine);
             MedicineService.getInstance();
 
+            // ConncetionPool이 있기에 반복문에 DB통신 코드를 박아도 괜찮음
+            // 만약 ConnectionPool이 없었다면??
+//            try {
+//                Thread.sleep(10);
+//            } catch (InterruptedException e) {
+//                throw new RuntimeException(e);
+//            }
+
 
         }
 

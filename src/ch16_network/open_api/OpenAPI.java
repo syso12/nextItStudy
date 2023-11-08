@@ -79,5 +79,9 @@ public class OpenAPI {
         try(FileWriter writer = new FileWriter(path + "/src/files/mediData.txt")) {
             writer.write(body.toString());
         }
+
+        // 4677 개를 다 불러다 DB에 넣기
+        // 아마도 한번에 100개 이상 응답 못받을수 있음
+        // 100개 씩 47번 pageNo를 바꿔가며 요청하고 응답받아야
     }
 }

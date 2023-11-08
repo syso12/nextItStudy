@@ -11,6 +11,7 @@ public class medison {
 
     public static void main(String[] args) {
 
+        // 서비스단은 쿼리문을 실행하기 위해 만든곳
         MedicineService medicineService = MedicineService.getInstance();
 
 
@@ -26,6 +27,10 @@ public class medison {
 
             if (ache.equals("q")) {
                 break;
+
+
+
+                // else가 있든없든 if조건이 참이면 넘어가기 때문에 굳이 else조건을 안써도 된다.
             } else if (ache != null && ache != "") {
                 ArrayList<MedicineDTO> medList = new ArrayList<>();
 

@@ -29,14 +29,23 @@ public class quest02 {
 
         // System.out.println(secret);
         int [] num = new int[6];
+
+//        String temp = "";
         for(int i = 0; i < num.length; i++){
             num[i] = (int)(Math.random() * 10);
         }
-        String pw = Arrays.toString(num).replaceAll("[^0-9]","");
-        // System.out.println(secret+pw);
-        String all = secret+pw;
 
-        return all;
+//        for (int i = 0; i < num.length; i++) {
+//            temp += num[i];
+//        }
+//
+//        secret += temp;
+//        String pw = Arrays.toString(num).replaceAll("[^0-9]","");
+//        // System.out.println(secret+pw);
+//        String all = secret+pw;
+
+
+        return secret;
     }
 
 
